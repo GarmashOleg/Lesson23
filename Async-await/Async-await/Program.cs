@@ -5,15 +5,15 @@ namespace Async_await
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
-            PrintNumbsAsync();
+            await PrintNumbsAsync();
             PrintNumbs();
 
             Console.WriteLine("Check Async func");
         }
 
-        public async static void PrintNumbsAsync()
+        public async static Task PrintNumbsAsync()
         {
             await Task.Run(() =>
             {

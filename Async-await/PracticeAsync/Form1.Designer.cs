@@ -12,16 +12,18 @@ namespace PracticeAsync
             InitializeComponent();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private async void button1_Click_1(object sender, EventArgs e)
         {
             var request = WebRequest.Create(textBox1.Text);
             var content = new MemoryStream();
 
-            using (var responce = request.GetResponse())
+            var respoceTask = request.GetResponseAsync();
+
+            using (var responce = await respoceTask)
             {
                 using ( var responceStream = responce.GetResponseStream())
                 {
-                    responceStream.CopyTo(content);
+                    await responceStream.CopyToAsync(content);
                 }
             }
 
